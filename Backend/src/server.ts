@@ -116,7 +116,9 @@ const getStartCommand = async (path: string): Promise<string> => {
     return fileSerialized['startCommand'];
 };
 
-//TODO: Create a function to read the content of 'microservice' file in order to receive the microservice initialization command
+// TODO: Allow multiple start-commands (or options) and show them in a list for each microservice available.
+
+// TODO: Create a function to read the content of 'microservice' file in order to receive the microservice initialization command
 //  Example microservice file content:
 //  
 //  In node microservice
