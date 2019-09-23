@@ -1,0 +1,10 @@
+#lists-container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    mat-card {
+        height: auto;
+        width: 12rem;
+    }
+}

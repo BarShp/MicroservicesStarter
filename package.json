@@ -1,0 +1,19 @@
+{
+  "name": "microservicestarter",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "start cmd /k \"cd Backend && npm start\" && start cmd /k \"cd Frontend && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BarShp/MicroserviceStarter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BarShp/MicroserviceStarter/issues"
+  },
+  "homepage": "https://github.com/BarShp/MicroserviceStarter#readme"
+}

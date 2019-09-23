@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,9 @@ import { PathChooserComponent } from './components/path-chooser/path-chooser.com
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatCardModule,
+    MatIconModule,
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,

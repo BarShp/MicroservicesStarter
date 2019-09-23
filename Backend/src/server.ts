@@ -3,6 +3,7 @@ import { Server } from 'http';
 import { AddressInfo } from 'net';
 
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import { promisify } from 'util';
@@ -13,6 +14,7 @@ const readDirAsync = promisify(fs.readdir),
 
 const app = express();
 app.use(express.static('./public'));
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', async (req, res, next) => {
@@ -65,6 +67,17 @@ app.get('/', async (req, res, next) => {
     </html>
     `);
     res.end();
+});
+
+app.get('/microservices', async (req, res, next) => {
+    const path = req.query['path'];
+    try {
+        const microservicesNames: string[] = await getNodeMicroservices(path);
+        res.status(200).send(microservicesNames);
+    }
+    catch (err) {
+        res.status(422).send(err.message);
+    }
 });
 
 app.post('/start', async (req, res, next) => {

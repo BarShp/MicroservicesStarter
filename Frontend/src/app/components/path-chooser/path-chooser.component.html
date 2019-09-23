@@ -1,0 +1,16 @@
+<div id="content">
+    <form [formGroup]="pathChooserForm" (ngSubmit)="onSubmit()">
+        <div id="search-bar">
+            <mat-form-field floatLabel="always">
+                <mat-label>Microservices Path</mat-label>
+                <input matInput placeholder="C:/Your/Microservice/Path" formControlName="path">
+                <mat-error *ngIf="true">
+                    Please enter a valid email address
+                </mat-error>
+            </mat-form-field>
+            <button id="search-btn" type="submit" mat-raised-button color="primary" [disabled]="!pathChooserForm.valid">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>

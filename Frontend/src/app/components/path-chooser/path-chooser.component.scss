@@ -1,0 +1,26 @@
+#content {
+    display:flex;
+    align-items: center;
+
+    form {
+        width: 100%;
+        
+        #search-bar {
+            width: 100%;
+            min-width: 18rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            mat-form-field {
+                padding-right: 1.5rem;
+                flex: 1;
+            }
+
+            #search-btn{
+                padding: 0;
+                min-width: 2.5rem;
+            }
+        }
+    }
+}
