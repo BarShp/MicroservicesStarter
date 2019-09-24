@@ -1,0 +1,19 @@
+#lists-container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    mat-card {
+        height: auto;
+        width: 12rem;
+        
+        mat-card-title {
+            font-size:1.1em;
+        }
+
+        mat-card-content {
+            height: auto;
+            overflow: auto;
+        }
+    }
+}

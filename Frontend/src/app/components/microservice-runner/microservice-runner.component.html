@@ -1,0 +1,21 @@
+<div id="lists-container">
+    <mat-card id="available-microservices-card">
+        <mat-card-title>Available Microservices</mat-card-title>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let msName of (microservices | async).names" role="listitem">
+                    {{msName}}</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card id="microservices-to-run-card">
+        <mat-card-title>Microservices To Run</mat-card-title>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let msName of (microservices | async).names" role="listitem">
+                    {{msName}}</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

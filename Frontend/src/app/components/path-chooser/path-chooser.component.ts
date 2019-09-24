@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { AppState } from 'src/app/models/app-state';
   templateUrl: './path-chooser.component.html',
   styleUrls: ['./path-chooser.component.scss']
 })
-export class PathChooserComponent implements OnInit {
+export class PathChooserComponent implements OnInit, OnDestroy {
   private microservicesSubscription: Subscription;
 
   private localStoragePathKey = 'path';
@@ -24,9 +24,6 @@ export class PathChooserComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    // const pathRegex =
-    //   new RegExp(`^[a-zA-Z]:\\[\\\S|*\S]?.*$`);
-
     this.pathFormControl = new FormControl(localStorage.getItem(this.localStoragePathKey),
       [
         Validators.required,
@@ -47,6 +44,10 @@ export class PathChooserComponent implements OnInit {
       }
       this.pathFormControl.updateValueAndValidity();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.microservicesSubscription.unsubscribe();
   }
 
   onSubmit() {

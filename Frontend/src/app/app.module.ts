@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatIconModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatListModule, MatCardModule, MatIconModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
@@ -14,22 +14,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './components/header/header.component';
-import { MicroserviceCheckerComponent } from './components/microservice-checker/microservice-checker.component';
 import { MicroserviceReaderService } from './services/microservice-reader/microservice-reader.service';
 import { PathChooserComponent } from './components/path-chooser/path-chooser.component';
+import { MicroserviceRunnerComponent } from './components/microservice-runner/microservice-runner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MicroserviceCheckerComponent,
-    PathChooserComponent
+    PathChooserComponent,
+    MicroserviceRunnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatListModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
