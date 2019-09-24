@@ -13,7 +13,9 @@ import { AppState } from 'src/app/models/app-state';
 export class PathChooserComponent implements OnInit {
   private microservicesSubscription: Subscription;
 
+  private localStoragePathKey = 'path';
   private pathIsValid = true;
+  private lastInvalidPath = null;
   private pathChooserForm: FormGroup;
   private pathFormControl: FormControl;
 
@@ -25,10 +27,11 @@ export class PathChooserComponent implements OnInit {
     // const pathRegex =
     //   new RegExp(`^[a-zA-Z]:\\[\\\S|*\S]?.*$`);
 
-    this.pathFormControl = new FormControl('',
+    this.pathFormControl = new FormControl(localStorage.getItem(this.localStoragePathKey),
       [
         Validators.required,
         this.pathOkValidator(),
+        this.sameInvalidPath()
       ]);
     this.pathChooserForm = new FormGroup({
       path: this.pathFormControl
@@ -36,22 +39,29 @@ export class PathChooserComponent implements OnInit {
 
     this.microservicesSubscription = this.store.select('microservices').subscribe((ms) => {
       this.pathIsValid = ms.pathIsValid;
+      if (this.pathIsValid) {
+        localStorage.setItem(this.localStoragePathKey, this.pathFormControl.value);
+        this.lastInvalidPath = null;
+      } else {
+        this.lastInvalidPath = this.pathFormControl.value;
+      }
       this.pathFormControl.updateValueAndValidity();
-    });
-    this.pathFormControl.valueChanges.subscribe(() => {
-      this.pathIsValid = true;
     });
   }
 
   onSubmit() {
-    // TODO: Save in localsession
-
     this.pathSubmitted.emit(this.pathChooserForm.get('path').value);
   }
 
   private pathOkValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       return this.pathIsValid ? null : { invalidPath: control.value };
+    };
+  }
+
+  private sameInvalidPath(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      return control.value !== this.lastInvalidPath ? null : { sameInvalidPath: control.value };
     };
   }
 }

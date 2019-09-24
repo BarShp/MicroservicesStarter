@@ -4,7 +4,8 @@
             <mat-form-field floatLabel="always">
                 <mat-label>Microservices Path</mat-label>
                 <input matInput placeholder="C:/Your/Microservice/Path" formControlName="path">
-                <mat-error *ngIf="this.pathFormControl.hasError('invalidPath')">
+                <mat-error
+                    *ngIf="this.pathFormControl.hasError('invalidPath') && this.pathFormControl.hasError('sameInvalidPath')">
                     Path is invalid or contains no microservices
                 </mat-error>
             </mat-form-field>
