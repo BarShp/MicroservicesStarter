@@ -6,12 +6,16 @@ In order for it to recognize a microservice in a path, the specific microservice
 
 E.g: 
 
-YourPath/MicroservicesParentFolder/MyDotNetMicroservice/microservice
+### YourPath/MicroservicesParentFolder/MyDotNetMicroservice/microservice
+``` json
 {
   "startCommand": "dotnet run"
 }
+```
 
-YourPath/MicroservicesParentFolder/MyNodeMicroservice/microservice
+### YourPath/MicroservicesParentFolder/MyNodeMicroservice/microservice
+``` json
 {
   "startCommand": "npm start:my-own-start-command"
 }
+```
