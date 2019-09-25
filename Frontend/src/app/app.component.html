@@ -6,7 +6,8 @@
                 <ms-path-chooser id="path-chooser" (pathSubmitted)="demo($event)"></ms-path-chooser>
             </div>
             <div id="microservice-runner-container">
-                <ms-microservice-runner id="microservice-runner"></ms-microservice-runner>
+                <ms-microservice-runner id="microservice-runner" (runMicroservicesSubmitted)="runMicroservices($event)">
+                </ms-microservice-runner>
             </div>
         </mat-card>
     </div>

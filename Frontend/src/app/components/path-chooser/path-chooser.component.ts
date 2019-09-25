@@ -19,7 +19,7 @@ export class PathChooserComponent implements OnInit, OnDestroy {
   private pathChooserForm: FormGroup;
   private pathFormControl: FormControl;
 
-  @Output() pathSubmitted = new EventEmitter<string>();
+  @Output() public pathSubmitted = new EventEmitter<string>();
 
   constructor(private store: Store<AppState>) { }
 

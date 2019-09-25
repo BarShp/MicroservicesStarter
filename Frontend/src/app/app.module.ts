@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './components/header/header.component';
-import { MicroserviceReaderService } from './services/microservice-reader/microservice-reader.service';
+import { MicroserviceManagerService } from './services/microservice-reader/microservice-manager.service';
 import { PathChooserComponent } from './components/path-chooser/path-chooser.component';
 import { MicroserviceRunnerComponent } from './components/microservice-runner/microservice-runner.component';
 
@@ -46,7 +46,7 @@ import { MicroserviceRunnerComponent } from './components/microservice-runner/mi
       maxAge: 10
     })
   ],
-  providers: [MicroserviceReaderService],
+  providers: [MicroserviceManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

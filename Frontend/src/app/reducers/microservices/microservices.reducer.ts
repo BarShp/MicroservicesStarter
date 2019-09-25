@@ -1,7 +1,7 @@
 import * as MicroservicesActions from './microservices.actions';
 import { Microservices } from 'src/app/models/microservices';
 
-const defaultState: Microservices = { names: [], pathIsValid: true };
+const defaultState: Microservices = { names: [], path: '', pathIsValid: true };
 
 export type Action = MicroservicesActions.All;
 

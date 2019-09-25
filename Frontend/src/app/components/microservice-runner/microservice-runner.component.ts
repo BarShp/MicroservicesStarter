@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/app-state';
@@ -17,6 +17,8 @@ export class MicroserviceRunnerComponent implements OnInit, OnDestroy {
   private microservicesToRunSubscription: Subscription;
 
   private allAvailableMicroservices: string[];
+
+  @Output() public runMicroservicesSubmitted = new EventEmitter<string[]>();
 
   public microservicesToRun: string[] = [];
 
@@ -58,6 +60,10 @@ export class MicroserviceRunnerComponent implements OnInit, OnDestroy {
 
   clearMicroservicesToRun() {
     this.store.dispatch(new ClearAll());
+  }
+
+  runMicroservices() {
+    this.runMicroservicesSubmitted.emit(this.microservicesToRun);
   }
 
   private distinctArray(arr: any[], distinctByArr: any[]) {

@@ -6,7 +6,7 @@ import * as MicroservicesActions from './reducers/microservices/microservices.ac
 import { Observable, Subscription } from 'rxjs';
 import { Microservices } from './models/microservices';
 
-import { MicroserviceReaderService } from './services/microservice-reader/microservice-reader.service';
+import { MicroserviceManagerService } from './services/microservice-reader/microservice-manager.service';
 
 @Component({
   selector: 'ms-root',
@@ -14,17 +14,15 @@ import { MicroserviceReaderService } from './services/microservice-reader/micros
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  pathError = null;
-  microservices: Observable<Microservices>;
+  private microservices: Microservices;
 
   private microservicesSubscription: Subscription;
 
-  constructor(private store: Store<AppState>, private msReader: MicroserviceReaderService) { }
+  constructor(private store: Store<AppState>, private msManager: MicroserviceManagerService) { }
 
   ngOnInit() {
-    this.microservices = this.store.select('microservices');
-    this.microservicesSubscription = this.microservices.subscribe((ms) => {
-      console.log(ms);
+    this.microservicesSubscription = this.store.select('microservices').subscribe((ms) => {
+      this.microservices = ms;
     });
   }
 
@@ -33,14 +31,18 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   demo = (path) => {
-    this.msReader.getMicroserviceNames(path).subscribe(
+    this.msManager.getMicroserviceNames(path).subscribe(
       (ms) => {
-        this.store.dispatch(new MicroservicesActions.Set({ names: ms, pathIsValid: !!ms.length }));
+        this.store.dispatch(new MicroservicesActions.Set({ names: ms, path: path, pathIsValid: !!ms.length }));
         console.log(this.microservices);
       },
       (err) => {
-        this.store.dispatch(new MicroservicesActions.Set({ names: null, pathIsValid: false }));
+        this.store.dispatch(new MicroservicesActions.Set({ names: [], path: path, pathIsValid: false }));
       }
     );
+  }
+
+  runMicroservices(msNames: string[]): void {
+    this.msManager.startMicroservices(this.microservices.path, msNames).subscribe(console.log);
   }
 }
