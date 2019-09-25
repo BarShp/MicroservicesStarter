@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.microservicesSubscription.unsubscribe();
   }
 
-  demo = (path) => {
+  pathChanged(path): void {
     this.msManager.getMicroserviceNames(path).subscribe(
       (ms) => {
         this.store.dispatch(new MicroservicesActions.Set({ names: ms, path: path, pathIsValid: !!ms.length }));
