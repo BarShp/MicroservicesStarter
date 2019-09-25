@@ -3,9 +3,10 @@
         <mat-card id="available-microservices-card">
             <mat-card-title>Available Microservices</mat-card-title>
             <mat-card-content>
-                <div *ngFor="let msName of (microservices | async).names">
+                <div *ngFor="let msName of getAvailableMicroservices()">
                     <span>{{msName}}</span>
-                    <button mat-icon-button color="primary" matTooltipPosition="right">
+                    <button mat-icon-button color="primary" matTooltipPosition="right"
+                        (click)="addMicroserviceToRun(msName)">
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>
@@ -15,9 +16,10 @@
         <mat-card id="microservices-to-run-card">
             <mat-card-title>Microservices To Run</mat-card-title>
             <mat-card-content>
-                <div *ngFor="let msName of (microservices | async).names">
+                <div *ngFor="let msName of microservicesToRun">
                     <span>{{msName}}</span>
-                    <button mat-icon-button color="primary" matTooltipPosition="right">
+                    <button mat-icon-button color="primary" matTooltipPosition="right"
+                        (click)="removeMicroserviceToRun(msName)">
                         <mat-icon class="delete-icon">delete</mat-icon>
                     </button>
                 </div>
@@ -27,10 +29,12 @@
     </div>
 
     <div id="buttons-container">
-        <button class="tmp" mat-raised-button color="primary" matTooltip="Add All" matTooltipPosition="right">
+        <button class="tmp" mat-raised-button color="primary" matTooltip="Add All" matTooltipPosition="right"
+            (click)="addAllMicroservicesToRun()">
             <mat-icon>add</mat-icon>
         </button>
-        <button class="tmp" mat-raised-button color="primary" matTooltip="Delete All" matTooltipPosition="right">
+        <button class="tmp" mat-raised-button color="primary" matTooltip="Delete All" matTooltipPosition="right"
+            (click)="clearMicroservicesToRun()">
             <mat-icon>delete</mat-icon>
         </button>
         <button class="tmp" mat-raised-button color="primary" matTooltip="Run" matTooltipPosition="right">

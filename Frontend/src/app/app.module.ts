@@ -9,6 +9,7 @@ import { MatListModule, MatCardModule, MatIconModule, MatButtonModule, MatToolti
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { microservicesReducer } from './reducers/microservices/microservices.reducer';
+import { microservicesToRunReducer } from './reducers/microservices-to-run/microservices-to-run.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,7 +39,8 @@ import { MicroserviceRunnerComponent } from './components/microservice-runner/mi
     MatInputModule,
     HttpClientModule,
     StoreModule.forRoot({
-      microservices: microservicesReducer
+      microservices: microservicesReducer,
+      microservicesToRun: microservicesToRunReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 10
