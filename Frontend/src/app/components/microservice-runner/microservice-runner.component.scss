@@ -1,19 +1,41 @@
-#lists-container{
+#content {
     height: 100%;
     display: flex;
     justify-content: space-between;
 
-    mat-card {
-        height: auto;
-        width: 12rem;
-        
-        mat-card-title {
-            font-size:1.1em;
-        }
-
-        mat-card-content {
+    #lists-container{
+        height: 100%;
+        flex: 1;
+        padding-right: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+    
+        mat-card {
             height: auto;
-            overflow: auto;
+            width: 38%;
+            display:flex;
+            flex-direction: column;
+            
+            mat-card-title {
+                font-size:0.9em;
+            }
+    
+            mat-card-content {
+                height: auto;
+                overflow: auto;
+            }
+        }
+    }
+
+    #buttons-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        button {
+            padding: 0;
+            min-width: 2.5rem;
+            margin: 0.35rem 0;
         }
     }
 }

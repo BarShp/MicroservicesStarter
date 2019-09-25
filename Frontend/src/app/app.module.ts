@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatIconModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatListModule, MatCardModule, MatIconModule, MatButtonModule, MatTooltipModule, MatInputModule } from '@angular/material';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
@@ -34,8 +34,8 @@ import { MicroserviceRunnerComponent } from './components/microservice-runner/mi
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
     MatInputModule,
-    MatCheckboxModule,
     HttpClientModule,
     StoreModule.forRoot({
       microservices: microservicesReducer
