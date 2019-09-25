@@ -23,6 +23,28 @@
             mat-card-content {
                 height: auto;
                 overflow: auto;
+                
+                div{
+                    padding-top: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    span{
+                        font-size: 0.9em;
+                        margin: 0.425rem 0;
+                    }
+
+                    .mat-icon-button{
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                    }
+
+                    .delete-icon {
+                        font-size: 22px;
+                    }
+                }
             }
         }
     }
