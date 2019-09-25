@@ -19,3 +19,5 @@ E.g:
   "startCommand": "npm start:my-own-start-command"
 }
 ```
+
+To run, you can enter the backend folder and start via 'npm start' (it contains the frontend as static file).
